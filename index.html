@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Юбилей</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #fdfaf6;
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1520857014576-2c4f4c972b57') center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background: gold;
+    color: black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.card {
+    background: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
+
+.fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+input, select {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 300px;
+}
+
+@media (max-width: 600px) {
+    .hero h1 { font-size: 28px; }
+    .hero h2 { font-size: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Приглашение на юбилей</h1>
+    <h2>Дьяконова Валентина Семеновна</h2>
+    <p>Будем рады видеть вас на празднике</p>
+    <p><b>18 апреля 2026</b></p>
+    <button class="btn" onclick="scrollToRSVP()">Подтвердить присутствие</button>
+</section>
+
+<!-- ОБРАЩЕНИЕ -->
+<section class="fade">
+<div class="card">
+    <h2>Дорогие гости</h2>
+    <p>
+        С большой радостью и теплом в сердце приглашаем вас разделить
+        важный и светлый день — юбилей нашей любимой
+        Валентины Семёновны.
+    </p>
+    <p>
+        Этот праздник наполнен воспоминаниями, благодарностью и счастьем,
+        и нам будет особенно приятно провести его вместе с вами.
+    </p>
+</div>
+</section>
+
+<!-- О ЮБИЛЯРЕ -->
+<section class="fade">
+<div class="card">
+    <h2>О юбиляре</h2>
+    <p>
+        Валентина Семёновна — человек с большим сердцем,
+        мудростью и неиссякаемой жизненной энергией.
+    </p>
+    <p>
+        За её плечами годы труда, заботы о семье и множество
+        добрых дел, которыми она согревала окружающих.
+    </p>
+    <p><i>«Самое ценное — это люди рядом»</i></p>
+</div>
+</section>
+
+<!-- ДЕТАЛИ -->
+<section class="fade">
+<div class="card">
+    <h2>Детали мероприятия</h2>
+    <p><b>Дата:</b> 18.04.2026</p>
+    <p><b>Место:</b> г. Якутск</p>
+    <p>Дом правительства 2, Столовая №3</p>
+    <p>Проспект Ленина, 30</p>
+    <p><b>Формат:</b> праздничный банкет</p>
+    <p><b>Дресс-код:</b> элегантный</p>
+</div>
+</section>
+
+<!-- ТАЙМИНГ -->
+<section class="fade">
+<div class="card">
+    <h2>Программа вечера</h2>
+    <p>17:00 — Сбор гостей</p>
+    <p>18:00 — Начало праздника</p>
+    <p>19:30 — Поздравления</p>
+    <p>21:00 — Торт 🎂</p>
+</div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section class="fade gallery">
+    <h2>Тёплые моменты</h2>
+    <img src="https://via.placeholder.com/250">
+    <img src="https://via.placeholder.com/250">
+    <img src="https://via.placeholder.com/250">
+</section>
+
+<!-- КАРТА -->
+<section class="fade">
+<div class="card">
+    <h2>Как добраться</h2>
+    <iframe 
+        src="https://maps.google.com/maps?q=Якутск%20Ленина%2030&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="300" style="border:0; border-radius:15px;">
+    </iframe>
+</div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="fade">
+<div class="card">
+    <h2>Подтверждение участия</h2>
+    <input type="text" placeholder="Ваше имя"><br>
+    <select>
+        <option>Буду</option>
+        <option>Не смогу</option>
+    </select><br>
+    <button class="btn">Отправить</button>
+</div>
+</section>
+
+<!-- ФИНАЛ -->
+<section class="fade">
+    <h2>Ждём вас на празднике!</h2>
+    <button class="btn" onclick="scrollToRSVP()">Подтвердить присутствие</button>
+</section>
+
+<script>
+function scrollToRSVP() {
+    document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth' });
+}
+
+// анимация появления
+const faders = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+    faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 100){
+            el.classList.add('visible');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
