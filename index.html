@@ -14,7 +14,6 @@
             --text-dark: #4A3C31;
             --text-light: #8A7B71;
             
-            /* Роскошные шрифты */
             --font-serif: 'Cormorant Garamond', serif;
             --font-script: 'Cormorant Garamond', serif; 
             --font-sans: 'Montserrat', sans-serif;
@@ -25,11 +24,7 @@
             --env-top: #DDC398;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-sans);
@@ -39,18 +34,10 @@
             background-color: transparent; 
         }
 
-        /* Блокировка скролла до открытия конверта */
-        body.no-scroll {
-            overflow: hidden;
-            height: 100vh;
-        }
+        body.no-scroll { overflow: hidden; height: 100vh; }
 
-        /* ========================================= */
-        /* ЖЕСТКО ЗАФИКСИРОВАННЫЙ АНИМИРОВАННЫЙ ФОН */
-        /* ========================================= */
         #fixed-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -3; 
             background: linear-gradient(-45deg, #FDFBF7, #F4EFE6, #FAF5EB, #EAE0D3);
             background-size: 400% 400%;
@@ -63,25 +50,15 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* ========================================= */
-        /* ПЫЛЬ (ПРИВЯЗАНА К САЙТУ, А НЕ К ЭКРАНУ) */
-        /* ========================================= */
         #particles-container {
-            position: absolute; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%; 
-            z-index: -2; 
-            pointer-events: none;
-            overflow: hidden;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            z-index: -2; pointer-events: none; overflow: hidden;
         }
 
         .particle {
             position: absolute;
             background: radial-gradient(circle, rgba(255, 245, 200, 1) 0%, rgba(255, 215, 0, 0.6) 30%, rgba(197, 160, 89, 0) 80%);
-            border-radius: 50%;
-            animation: floatLocal linear infinite;
+            border-radius: 50%; animation: floatLocal linear infinite;
             box-shadow: 0 0 6px rgba(255, 215, 0, 0.5); 
         }
 
@@ -92,18 +69,12 @@
             100% { transform: translateY(-150px) translateX(var(--drift)) scale(1.2); opacity: 0; }
         }
 
-        /* ========================================= */
-        /* СТАРТОВЫЙ ЭКРАН С КОНВЕРТОМ */
-        /* ========================================= */
         #envelope-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(135deg, #FDFBF7 0%, #F0EAE1 100%);
-            z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 1s ease 1.7s; 
         }
-
         #envelope-screen.hidden { opacity: 0; pointer-events: none; }
 
         .envelope-wrapper { position: relative; width: 90vw; max-width: 500px; aspect-ratio: 1.5 / 1; cursor: pointer; perspective: 1200px; }
@@ -112,252 +83,103 @@
         .env-letter {
             position: absolute; top: 5%; left: 5%; width: 90%; height: 90%;
             background-color: #fff; border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1); z-index: 2;
-            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1); z-index: 2; transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s; 
         }
-        
-        .env-letter h2 { 
-            font-family: var(--font-script); 
-            font-style: italic;
-            font-size: clamp(3rem, 9vw, 4.5rem); 
-            font-weight: 600; 
-            color: var(--gold); 
-            margin-bottom: 0px; 
-            line-height: 1; 
-        }
-        .env-letter .age { font-family: var(--font-serif); font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 600; color: var(--gold); line-height: 1; }
-
+        .env-letter h2 { font-family: var(--font-script); font-style: italic; font-size: clamp(3rem, 9vw, 4.5rem); font-weight: 600; color: var(--gold); margin-bottom: 0px; line-height: 1; }
         .env-left { background-color: var(--env-side); clip-path: polygon(0 0, 52% 50%, 0 100%); z-index: 3; }
         .env-right { background-color: var(--env-side); clip-path: polygon(100% 0, 100% 100%, 48% 50%); z-index: 3; }
         .env-bottom { background-color: var(--env-bottom); clip-path: polygon(0 100%, 50% 48%, 100% 100%); z-index: 4; }
         .env-top { background-color: var(--env-top); clip-path: polygon(0 0, 100% 0, 50% 52%); transform-origin: top center; z-index: 5; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, z-index 0s 0.4s; }
-
         .env-seal {
             position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%);
             width: 50px; height: 50px; background-color: var(--gold); border-radius: 50%; z-index: 6;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 0 10px rgba(133, 100, 39, 0.3);
-            display: flex; justify-content: center; align-items: center;
-            color: #fff; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; transition: opacity 0.3s ease;
+            display: flex; justify-content: center; align-items: center; color: #fff; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; transition: opacity 0.3s ease;
         }
         .env-seal::after { content: 'В'; }
-
         .click-text { margin-top: 50px; font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; animation: pulse 2s infinite; }
-
         .envelope-wrapper.open .env-seal { opacity: 0; }
         .envelope-wrapper.open .env-top { transform: rotateX(180deg); z-index: 1; }
         .envelope-wrapper.open .env-letter { transform: translateY(-70%); }
-
         @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
 
-        /* ========================================= */
-        /* ОСНОВНОЙ КОНТЕНТ */
-        /* ========================================= */
         #main-content { opacity: 0; transition: opacity 1.5s ease 0.5s; position: relative; z-index: 1; }
         #main-content.visible { opacity: 1; }
-
         section { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; overflow: hidden; }
         h2.section-title { font-family: var(--font-serif); font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
-
-        /* --- АНИМАЦИИ ПРИ СКРОЛЛЕ --- */
+        
         .reveal { opacity: 0; transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translate(0) scale(1); }
-        
         .fade-up { transform: translateY(60px); }
         .fade-down { transform: translateY(-40px); }
         .scale-in { transform: scale(0.9); }
-        
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
         .delay-3 { transition-delay: 0.6s; }
 
-        /* ЭФФЕКТ МАТОВОГО СТЕКЛА */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
+        .glass-card { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
 
-        /* HERO СЕКЦИЯ */
-        .hero { 
-            position: relative; 
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            padding: 40px 20px; 
-            overflow: visible; 
-            background: transparent;
-        }
-
+        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; overflow: visible; background: transparent; }
         .hero h1 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;}
         
         .hero-65-accent { 
-            font-family: var(--font-serif); 
-            font-size: clamp(8rem, 25vw, 15rem); 
+            font-family: var(--font-serif); font-size: clamp(8rem, 25vw, 15rem); 
             background: linear-gradient(to right, #C5A059 0%, #F8E2A7 50%, #C5A059 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            margin: 10px 0; 
-            line-height: 1.2; 
-            font-weight: 600;
-            padding: 30px 0; 
-            text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
-            display: inline-block;
-            position: relative;
-            opacity: 0;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto;
+            margin: 10px 0; line-height: 1.2; font-weight: 600; padding: 30px 0; 
+            text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); display: inline-block; position: relative; opacity: 0;
         }
-        
-        .hero-65-accent::before, .hero-65-accent::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 150px; 
-            height: 2px;
-            background-color: var(--gold);
-            opacity: 0.5;
-        }
+        .hero-65-accent::before, .hero-65-accent::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 150px; height: 2px; background-color: var(--gold); opacity: 0.5; }
         .hero-65-accent::before { left: -180px; } 
         .hero-65-accent::after { right: -180px; }
 
-        .reveal.active .hero-65-accent {
-            animation: goldenBloomIn 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, shimmerText 4s linear infinite;
-            animation-delay: 0.8s;
-        }
-
+        .reveal.active .hero-65-accent { animation: goldenBloomIn 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, shimmerText 4s linear infinite; animation-delay: 0.8s; }
         @keyframes goldenBloomIn {
             0% { opacity: 0; transform: scale(0.3) rotateX(-45deg) translateY(60px); filter: blur(15px); }
             55% { transform: scale(1.05) rotateX(5deg) translateY(0); filter: blur(1px); }
             75% { transform: scale(0.98) rotateX(0deg) translateY(0); filter: blur(0px); }
             100% { opacity: 1; transform: scale(1) rotateX(0deg) translateY(0); filter: blur(0px); }
         }
-
-        @keyframes shimmerText {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
+        @keyframes shimmerText { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
         
         .hero .subtitle { font-size: 1.15rem; color: var(--text-dark); max-width: 700px; margin: 0 auto 30px; line-height: 1.6; font-weight: 400;}
-        
         .hero-details { display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; margin-top: 10px; }
-
         .detail-item { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; font-weight: 500; padding: 15px 30px; border-radius: 40px; }
         .detail-item svg { color: var(--gold); flex-shrink: 0; }
-
-        .btn {
-            display: inline-block; padding: 18px 45px; background-color: var(--gold); color: #fff; text-decoration: none; border-radius: 40px;
-            font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s;
-            border: none; cursor: pointer; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); font-size: 0.9rem;
-        }
+        .btn { display: inline-block; padding: 18px 45px; background-color: var(--gold); color: #fff; text-decoration: none; border-radius: 40px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); font-size: 0.9rem; }
         .btn:hover { background-color: #B59048; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5); }
 
         /* --- КАРУСЕЛИ --- */
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
-        }
+        .carousel-container { position: relative; max-width: 100%; margin: 0 auto; }
         .carousel-wrapper {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            /* Отключаем выделение для удобного свайпа */
-            user-select: none;
-            -webkit-user-select: none;
+            position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            user-select: none; -webkit-user-select: none; touch-action: pan-y;
         }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-            height: 100%;
-            touch-action: pan-y;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            height: 100%;
-        }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); height: 100%; }
+        .carousel-slide { min-width: 100%; box-sizing: border-box; height: 100%; }
         .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none; /* Чтобы картинка не мешала свайпам */
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            pointer-events: none; -webkit-user-drag: none;
         }
         
-        .carousel-main {
-            width: 100%; 
-            max-width: 450px; 
-            aspect-ratio: 3 / 4; 
-            margin: 0 auto; 
-            z-index: 4;
-        }
+        .carousel-main { width: 100%; max-width: 450px; aspect-ratio: 3 / 4; margin: 0 auto; z-index: 4; }
         .carousel-main .carousel-wrapper { height: 100%; }
-
         .carousel-gallery { padding-top: 20px; }
         .carousel-gallery .carousel-wrapper { height: 450px; }
 
-        /* ОБНОВЛЕННЫЕ СТРЕЛКИ (Без фона и рамок) */
         .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent; /* Убрали фон */
-            border: none;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff; /* Белый цвет стрелки */
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); /* Тень, чтобы стрелка не сливалась со светлыми фото */
-            transition: all 0.3s ease;
-            z-index: 10;
-            padding: 0;
+            position: absolute; top: 50%; transform: translateY(-50%); background: transparent; border: none; width: 50px; height: 50px; cursor: pointer; display: flex; justify-content: center; align-items: center; color: #fff; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); transition: all 0.3s ease; z-index: 10; padding: 0;
         }
-        .carousel-btn svg {
-            width: 32px;
-            height: 32px;
-        }
-        .carousel-btn:hover {
-            color: var(--gold); /* При наведении становится золотой */
-            transform: translateY(-50%) scale(1.15);
-        }
+        .carousel-btn svg { width: 32px; height: 32px; }
+        .carousel-btn:hover { color: var(--gold); transform: translateY(-50%) scale(1.15); }
         .prev-btn { left: 10px; }
         .next-btn { right: 10px; }
         
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-            position: relative;
-            z-index: 10;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(197, 160, 89, 0.3);
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .dot.active {
-            background: var(--gold);
-            transform: scale(1.3);
-        }
+        .carousel-indicators { display: flex; justify-content: center; gap: 10px; margin-top: 20px; position: relative; z-index: 10; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(197, 160, 89, 0.3); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+        .dot.active { background: var(--gold); transform: scale(1.3); }
         
-        .honoree-name-large { 
-            font-family: var(--font-script); 
-            font-style: italic;
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
-            color: var(--gold); 
-            margin-top: -30px; 
-            margin-bottom: 30px;
-            line-height: 1;
-            font-weight: 600;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 5;
-        }
+        .honoree-name-large { font-family: var(--font-script); font-style: italic; font-size: clamp(3.5rem, 10vw, 6.5rem); color: var(--gold); margin-top: -30px; margin-bottom: 30px; line-height: 1; font-weight: 600; text-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; z-index: 5; }
         
         .about-text { line-height: 1.8; font-size: 1.15rem; margin-bottom: 20px; font-weight: 400; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
         .quote { font-family: var(--font-script); font-style: italic; font-size: 2.5rem; font-weight: 600; color: var(--gold); margin: 40px 0; line-height: 1.2;}
@@ -390,7 +212,6 @@
         .radio-group input[type="radio"] { accent-color: var(--gold); transform: scale(1.2);}
 
         .map-container { border-radius: 20px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.5);}
-
         footer { padding: 80px 20px; text-align: center; color: var(--gold); font-family: var(--font-script); font-style: italic; font-size: 3.5rem; font-weight: 600; background: rgba(232, 220, 196, 0.3); backdrop-filter: blur(10px); }
 
         @media(max-width: 768px) { 
@@ -400,15 +221,10 @@
             .timer-box { width: 65px; padding: 15px 0;}
             .timer-box .num { font-size: 1.8rem; }
             .hero h1 { font-size: 1.4rem; }
-            
-            .hero-65-accent { 
-                font-size: 8.5rem; 
-                padding: 20px 0; 
-            }
+            .hero-65-accent { font-size: 8.5rem; padding: 20px 0; }
             .hero-65-accent::before, .hero-65-accent::after { width: 50px; }
             .hero-65-accent::before { left: -60px; }
             .hero-65-accent::after { right: -60px; }
-
             .carousel-gallery .carousel-wrapper { height: 300px; }
         }
     </style>
@@ -451,19 +267,11 @@
             
             <div class="hero-details reveal fade-up delay-3">
                 <div class="detail-item glass-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     <span>Муус устар 18 күнэ, 2026</span>
                 </div>
                 <div class="detail-item glass-card">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     <span>Саҕаланар: 17:00</span>
                 </div>
             </div>
@@ -555,11 +363,7 @@
 
         <section>
             <h2 class="section-title reveal fade-up">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 12px; margin-bottom: 5px; color: var(--gold);">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                </svg>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 12px; margin-bottom: 5px; color: var(--gold);"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                 Түгэннэр
             </h2>
             
@@ -575,7 +379,6 @@
                         <div class="carousel-slide"><img src="images/7.jpg" alt="Момент 7"></div>
                         <div class="carousel-slide"><img src="images/8.jpg" alt="Момент 8"></div>
                     </div>
-                    
                     <button class="carousel-btn prev-btn">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
                     </button>
@@ -583,16 +386,8 @@
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </button>
                 </div>
-                
                 <div class="carousel-indicators">
-                    <div class="dot active" data-index="0"></div>
-                    <div class="dot" data-index="1"></div>
-                    <div class="dot" data-index="2"></div>
-                    <div class="dot" data-index="3"></div>
-                    <div class="dot" data-index="4"></div>
-                    <div class="dot" data-index="5"></div>
-                    <div class="dot" data-index="6"></div>
-                    <div class="dot" data-index="7"></div>
+                    <div class="dot active" data-index="0"></div><div class="dot" data-index="1"></div><div class="dot" data-index="2"></div><div class="dot" data-index="3"></div><div class="dot" data-index="4"></div><div class="dot" data-index="5"></div><div class="dot" data-index="6"></div><div class="dot" data-index="7"></div>
                 </div>
             </div>
         </section>
@@ -609,14 +404,8 @@
                 <div class="form-group">
                     <label>Кэлэҕин дуо?</label>
                     <div class="radio-group">
-                        <label>
-                            <input type="radio" name="attendance" value="С радостью буду!" checked>
-                            Үөрүүнү кытта кэлиэм
-                        </label>
-                        <label>
-                            <input type="radio" name="attendance" value="К сожалению, не смогу быть.">
-                            Кыайан кэлбэппин
-                        </label>
+                        <label><input type="radio" name="attendance" value="С радостью буду!" checked>Үөрүүнү кытта кэлиэм</label>
+                        <label><input type="radio" name="attendance" value="К сожалению, не смогу быть.">Кыайан кэлбэппин</label>
                     </div>
                 </div>
                 <button type="submit" class="btn" style="width: 100%; margin-top: 20px; font-size: 1rem;">Ыыт</button>
@@ -630,32 +419,23 @@
     </div>
 
     <script>
-        // --- 1. ГЕНЕРАЦИЯ ТОЛЬКО ПАРЯЩЕЙ ПЫЛИ ---
         function createParticles() {
             const container = document.getElementById('particles-container');
-            const particleCount = 100; 
-            for (let i = 0; i < particleCount; i++) {
-                let particle = document.createElement('div');
-                particle.classList.add('particle');
+            for (let i = 0; i < 100; i++) {
+                let p = document.createElement('div');
+                p.classList.add('particle');
                 let size = Math.random() * 8 + 4;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                let blurAmount = Math.random() * 3;
-                particle.style.filter = `blur(${blurAmount}px)`;
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}%`;
-                let duration = Math.random() * 20 + 15; 
-                let delay = Math.random() * 20; 
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `-${delay}s`; 
-                let drift = (Math.random() - 0.5) * 100; 
-                particle.style.setProperty('--drift', `${drift}px`);
-                container.appendChild(particle);
+                p.style.width = `${size}px`; p.style.height = `${size}px`;
+                p.style.filter = `blur(${Math.random() * 3}px)`;
+                p.style.left = `${Math.random() * 100}vw`; p.style.top = `${Math.random() * 100}%`;
+                p.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                p.style.animationDelay = `-${Math.random() * 20}s`; 
+                p.style.setProperty('--drift', `${(Math.random() - 0.5) * 100}px`);
+                container.appendChild(p);
             }
         }
         createParticles();
 
-        // --- 2. ЛОГИКА КОНВЕРТА ---
         const envelopeScreen = document.getElementById('envelope-screen');
         const envelopeTrigger = document.getElementById('envelope-trigger');
         const mainContent = document.getElementById('main-content');
@@ -666,15 +446,10 @@
             envelopeTrigger.classList.add('open');
             mainContent.classList.add('visible');
             envelopeScreen.classList.add('hidden');
-            setTimeout(() => {
-                document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
-            }, 600);
-            setTimeout(() => {
-                envelopeScreen.style.display = 'none';
-            }, 2700); 
+            setTimeout(() => { document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active')); }, 600);
+            setTimeout(() => { envelopeScreen.style.display = 'none'; }, 2700); 
         });
 
-        // --- 3. АНИМАЦИИ ПРИ СКРОЛЛЕ ---
         const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -685,74 +460,51 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('section:not(.hero) .reveal, footer.reveal').forEach(element => { 
-            observer.observe(element); 
-        });
+        document.querySelectorAll('section:not(.hero) .reveal, footer.reveal').forEach(el => observer.observe(el)); 
 
-        // --- 4. ТАЙМЕР ---
         const eventDate = new Date("April 18, 2026 17:00:00").getTime();
         const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
-
+            const distance = eventDate - new Date().getTime();
             if (distance < 0) {
                 clearInterval(timer);
                 document.getElementById("countdown").innerHTML = "<div class='timer-box glass-card' style='width:auto; padding: 15px 30px;'><span class='num'>Ура!</span><span class='text'>Бырааһынньык саҕаланна</span></div>";
                 return;
             }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
         }, 1000);
 
-        // --- 5. ФОРМА WHATSAPP ---
         document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('guest-name').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const message = `Үтүө күнүнэн! Бу мин ${name} суруйабын.%0AМуус устар 18 күнүгэр буолар үбүлүөйгэ ыҥырыыгыт иһин махтал:%0A${attendance}`;
-            const phone = "79142629255"; 
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            const att = document.querySelector('input[name="attendance"]:checked').value;
+            window.open(`https://wa.me/79142629255?text=Үтүө күнүнэн! Бу мин ${name} суруйабын.%0AМуус устар 18 күнүгэр буолар үбүлүөйгэ ыҥырыыгыт иһин махтал:%0A${att}`, '_blank');
         });
 
-        // --- 6. ОБНОВЛЕННАЯ ЛОГИКА КАРУСЕЛЕЙ (Скролл + Свайпы) ---
+        // --- УЛУЧШЕННАЯ ЛОГИКА СВАЙПОВ ---
         function initCarousels() {
             const carousels = document.querySelectorAll('.carousel-container');
-            
             const carouselObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.startAutoPlay();
-                    } else {
-                        entry.target.stopAutoPlay();
-                    }
+                    if (entry.isIntersecting) { entry.target.startAutoPlay(); } 
+                    else { entry.target.stopAutoPlay(); }
                 });
             }, { threshold: 0.3 });
 
             carousels.forEach(carousel => {
+                const wrapper = carousel.querySelector('.carousel-wrapper');
                 const track = carousel.querySelector('.carousel-track');
                 const slides = Array.from(track.children);
                 const nextBtn = carousel.querySelector('.next-btn');
                 const prevBtn = carousel.querySelector('.prev-btn');
                 const dots = Array.from(carousel.querySelectorAll('.dot'));
-                let currentIndex = 0;
-                let slideInterval;
-                let isPlaying = false;
+                let currentIndex = 0; let slideInterval; let isPlaying = false;
 
                 function updateCarousel() {
-                    const slideWidth = slides[0].getBoundingClientRect().width;
-                    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-                    
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === currentIndex);
-                    });
+                    track.style.transform = `translateX(-${currentIndex * slides[0].getBoundingClientRect().width}px)`;
+                    dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentIndex));
                 }
 
                 function nextSlide() {
@@ -761,78 +513,41 @@
                 }
 
                 carousel.startAutoPlay = function() {
-                    if (!isPlaying) {
-                        slideInterval = setInterval(nextSlide, 4500);
-                        isPlaying = true;
-                    }
+                    if (!isPlaying) { slideInterval = setInterval(nextSlide, 4500); isPlaying = true; }
                 };
 
                 carousel.stopAutoPlay = function() {
-                    clearInterval(slideInterval);
-                    isPlaying = false;
+                    clearInterval(slideInterval); isPlaying = false;
                 };
 
                 function resetAutoSlide() {
-                    if (isPlaying) {
-                        carousel.stopAutoPlay();
-                        carousel.startAutoPlay();
-                    }
+                    if (isPlaying) { carousel.stopAutoPlay(); carousel.startAutoPlay(); }
                 }
 
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', () => {
-                        nextSlide();
-                        resetAutoSlide();
-                    });
-                }
+                if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+                if (prevBtn) prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); resetAutoSlide(); });
+                dots.forEach((dot, idx) => dot.addEventListener('click', () => { currentIndex = idx; updateCarousel(); resetAutoSlide(); }));
 
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', () => {
-                        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                        updateCarousel();
-                        resetAutoSlide();
-                    });
-                }
-
-                dots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateCarousel();
-                        resetAutoSlide();
-                    });
-                });
-
-                // Улучшенная поддержка свайпов
+                // ИДЕАЛЬНЫЙ СВАЙП 
                 let startX = 0;
                 let endX = 0;
 
-                track.addEventListener('touchstart', (e) => {
+                wrapper.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
+                    endX = startX; // Сбрасываем конец на начало при каждом тапе
                     carousel.stopAutoPlay();
                 }, {passive: true});
 
-                track.addEventListener('touchmove', (e) => {
+                wrapper.addEventListener('touchmove', (e) => {
                     endX = e.touches[0].clientX;
                 }, {passive: true});
 
-                track.addEventListener('touchend', () => {
-                    if (!startX || !endX) return;
-                    
+                wrapper.addEventListener('touchend', () => {
                     const diff = startX - endX;
-
-                    // Если длина свайпа больше 40 пикселей (оптимальная чувствительность)
-                    if (Math.abs(diff) > 40) { 
-                        if (diff > 0) {
-                            nextSlide(); // Свайп влево
-                        } else {
-                            currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Свайп вправо
-                            updateCarousel();
-                        }
+                    if (Math.abs(diff) > 40) { // Если сдвиг больше 40px
+                        if (diff > 0) { nextSlide(); } 
+                        else { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); }
                     }
-                    
-                    // Сбрасываем координаты
-                    startX = 0;
-                    endX = 0;
                     carousel.startAutoPlay(); 
                 });
 
@@ -840,7 +555,6 @@
                 carouselObserver.observe(carousel);
             });
         }
-        
         initCarousels();
     </script>
 </body>
