@@ -187,7 +187,6 @@
 
         .hero h1 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;}
         
-        /* ИСПРАВЛЕННАЯ ЦИФРА 65 (Увеличенный line-height и padding, чтобы не обрезалась нижняя часть) */
         .hero-65-accent { 
             font-family: var(--font-serif); 
             font-size: clamp(8rem, 25vw, 15rem); 
@@ -196,9 +195,9 @@
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
             margin: 10px 0; 
-            line-height: 1.2; /* Было 0.9, теперь хвост 5-ки поместится полностью */
+            line-height: 1.2; 
             font-weight: 600;
-            padding: 30px 0; /* Добавили воздух сверху и снизу */
+            padding: 30px 0; 
             text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
             display: inline-block;
             position: relative;
@@ -268,7 +267,6 @@
             display: flex;
             transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
             height: 100%;
-            /* Фикс для свайпа - не даем перетаскивать саму картинку браузером */
             touch-action: pan-y;
         }
         .carousel-slide {
@@ -281,7 +279,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            pointer-events: none; /* Картинку нельзя случайно "зацепить" и потащить */
+            pointer-events: none; /* Чтобы картинка не мешала свайпам */
         }
         
         .carousel-main {
@@ -296,32 +294,35 @@
         .carousel-gallery { padding-top: 20px; }
         .carousel-gallery .carousel-wrapper { height: 450px; }
 
+        /* ОБНОВЛЕННЫЕ СТРЕЛКИ (Без фона и рамок) */
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(4px);
+            background: transparent; /* Убрали фон */
             border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--gold);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            color: #fff; /* Белый цвет стрелки */
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6)); /* Тень, чтобы стрелка не сливалась со светлыми фото */
+            transition: all 0.3s ease;
             z-index: 10;
+            padding: 0;
+        }
+        .carousel-btn svg {
+            width: 32px;
+            height: 32px;
         }
         .carousel-btn:hover {
-            background: #fff;
-            color: var(--text-dark);
-            transform: translateY(-50%) scale(1.1);
+            color: var(--gold); /* При наведении становится золотой */
+            transform: translateY(-50%) scale(1.15);
         }
-        .prev-btn { left: 15px; }
-        .next-btn { right: 15px; }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
         
         .carousel-indicators {
             display: flex;
@@ -400,10 +401,9 @@
             .timer-box .num { font-size: 1.8rem; }
             .hero h1 { font-size: 1.4rem; }
             
-            /* Мобильный размер цифры 65 */
             .hero-65-accent { 
                 font-size: 8.5rem; 
-                padding: 20px 0; /* Тоже увеличен отступ */
+                padding: 20px 0; 
             }
             .hero-65-accent::before, .hero-65-accent::after { width: 50px; }
             .hero-65-accent::before { left: -60px; }
@@ -726,10 +726,8 @@
         function initCarousels() {
             const carousels = document.querySelectorAll('.carousel-container');
             
-            // Наблюдатель (Observer), который следит, видно ли карусель на экране
             const carouselObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // Если карусель видно хотя бы на 30% - запускаем, иначе ставим на паузу
                     if (entry.isIntersecting) {
                         entry.target.startAutoPlay();
                     } else {
@@ -762,7 +760,6 @@
                     updateCarousel();
                 }
 
-                // Делаем функции доступными для Observer
                 carousel.startAutoPlay = function() {
                     if (!isPlaying) {
                         slideInterval = setInterval(nextSlide, 4500);
@@ -782,7 +779,6 @@
                     }
                 }
 
-                // Кнопки управления
                 if (nextBtn) {
                     nextBtn.addEventListener('click', () => {
                         nextSlide();
@@ -806,29 +802,26 @@
                     });
                 });
 
-                // Добавляем поддержку свайпов пальцем
+                // Улучшенная поддержка свайпов
                 let startX = 0;
-                let currentX = 0;
-                let isDragging = false;
+                let endX = 0;
 
                 track.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
-                    isDragging = true;
-                    carousel.stopAutoPlay(); // Пауза при касании
+                    carousel.stopAutoPlay();
                 }, {passive: true});
 
                 track.addEventListener('touchmove', (e) => {
-                    if (!isDragging) return;
-                    currentX = e.touches[0].clientX;
+                    endX = e.touches[0].clientX;
                 }, {passive: true});
 
                 track.addEventListener('touchend', () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    const diff = startX - currentX;
+                    if (!startX || !endX) return;
+                    
+                    const diff = startX - endX;
 
-                    // Если провели пальцем больше чем на 50 пикселей
-                    if (Math.abs(diff) > 50) { 
+                    // Если длина свайпа больше 40 пикселей (оптимальная чувствительность)
+                    if (Math.abs(diff) > 40) { 
                         if (diff > 0) {
                             nextSlide(); // Свайп влево
                         } else {
@@ -837,18 +830,17 @@
                         }
                     }
                     
-                    // Возобновляем автопрокрутку, если карусель все еще на экране
+                    // Сбрасываем координаты
+                    startX = 0;
+                    endX = 0;
                     carousel.startAutoPlay(); 
                 });
 
                 window.addEventListener('resize', updateCarousel);
-                
-                // Передаем карусель наблюдателю
                 carouselObserver.observe(carousel);
             });
         }
         
-        // Запускаем инициализацию всех каруселей
         initCarousels();
     </script>
 </body>
