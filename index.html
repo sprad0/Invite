@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ыҥырыы сурук</title>
+    <title>Ыҥырыы | 65</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
@@ -108,18 +108,117 @@
         section { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; overflow: hidden; }
         h2.section-title { font-family: var(--font-serif); font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
         
-        .reveal { opacity: 0; transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translate(0) scale(1); }
+        /* Базовые стили для анимации появления */
+        .reveal { 
+            opacity: 0; 
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); 
+        }
+        
+        /* Состояние после активации (скролл или открытие конверта) */
+        .reveal.active { 
+            opacity: 1; 
+            transform: translate(0, 0) scale(1) !important; /* Force to final state */
+        }
+        
+        /* Различные типы входа */
         .fade-up { transform: translateY(60px); }
         .fade-down { transform: translateY(-40px); }
         .scale-in { transform: scale(0.9); }
+        
+        /* Хелперы задержки для скролла */
         .delay-1 { transition-delay: 0.2s; }
         .delay-2 { transition-delay: 0.4s; }
         .delay-3 { transition-delay: 0.6s; }
 
+        /* ========================================= */
+        /* УНИКАЛЬНЫЕ АНИМАЦИИ ДЛЯ СЕКЦИИ HERO */
+        /* ========================================= */
+        
+        /* 1. Заголовок "ДОРОГОЙ ГОСТЬ" - мягко падает сверху */
+        .hero h1.reveal {
+            transform: translateY(-50px) scale(0.95);
+        }
+        .visible .hero h1.reveal {
+            animation: heroFadeDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.1s; /* Самый первый */
+        }
+
+        /* 2. Верхний подзаголовок - всплывает */
+        .hero .subtitle-top.reveal {
+            transform: translateY(40px);
+        }
+        .visible .hero .subtitle-top.reveal {
+            animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        /* 3. Цифра "65" - старая роскошная анимация цветения */
+        .hero-65-accent.reveal {
+            opacity: 0;
+            /* Сама надпись не сдвигается CSS-ом, сдвиг зашит в @keyframes goldenBloomIn */
+        }
+        .visible .hero-65-accent.reveal {
+            /* Перезаписываем дефолтный transition на keyframes */
+            transition: none; 
+            animation: goldenBloomIn 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, shimmerText 4s linear infinite;
+            animation-delay: 0.8s; /* Ровно посередине цепочки */
+        }
+
+        /* 4. Нижний подзаголовок - всплывает */
+        .hero .subtitle-bottom.reveal {
+            transform: translateY(40px);
+        }
+        .visible .hero .subtitle-bottom.reveal {
+            animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 1.2s;
+        }
+
+        /* 5. Блоки с деталями (дата/время) - проявляются с масштабом */
+        .hero-details .reveal {
+            transform: scale(0.8);
+        }
+        .visible .hero-details .reveal {
+            animation: heroScaleIn 1.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 1.6s;
+        }
+
+        /* 6. Кнопка - всплывает последней */
+        .hero .btn.reveal {
+            transform: translateY(50px);
+        }
+        .visible .hero .btn.reveal {
+            animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 2.0s;
+        }
+
+        /* Ключевые кадры для HERO */
+        @keyframes heroFadeDown {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroScaleIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Старые Keyframes для 65 */
+        @keyframes goldenBloomIn {
+            0% { opacity: 0; transform: scale(0.3) rotateX(-45deg) translateY(60px); filter: blur(15px); }
+            55% { transform: scale(1.05) rotateX(5deg) translateY(0); filter: blur(1px); }
+            75% { transform: scale(0.98) rotateX(0deg) translateY(0); filter: blur(0px); }
+            100% { opacity: 1; transform: scale(1) rotateX(0deg) translateY(0); filter: blur(0px); }
+        }
+
+        @keyframes shimmerText {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        /* ========================================= */
+
         .glass-card { background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
 
-        .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px; overflow: visible; background: transparent; }
         .hero h1 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;}
         
         .hero-65-accent { 
@@ -127,20 +226,11 @@
             background: linear-gradient(to right, #C5A059 0%, #F8E2A7 50%, #C5A059 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% auto;
             margin: 10px 0; line-height: 1.2; font-weight: 600; padding: 30px 0; 
-            text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); display: inline-block; position: relative; opacity: 0;
+            text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4); display: inline-block; position: relative;
         }
         .hero-65-accent::before, .hero-65-accent::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 150px; height: 2px; background-color: var(--gold); opacity: 0.5; }
         .hero-65-accent::before { left: -180px; } 
         .hero-65-accent::after { right: -180px; }
-
-        .reveal.active .hero-65-accent { animation: goldenBloomIn 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, shimmerText 4s linear infinite; animation-delay: 0.8s; }
-        @keyframes goldenBloomIn {
-            0% { opacity: 0; transform: scale(0.3) rotateX(-45deg) translateY(60px); filter: blur(15px); }
-            55% { transform: scale(1.05) rotateX(5deg) translateY(0); filter: blur(1px); }
-            75% { transform: scale(0.98) rotateX(0deg) translateY(0); filter: blur(0px); }
-            100% { opacity: 1; transform: scale(1) rotateX(0deg) translateY(0); filter: blur(0px); }
-        }
-        @keyframes shimmerText { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
         
         .hero .subtitle { font-size: 1.15rem; color: var(--text-dark); max-width: 700px; margin: 0 auto 30px; line-height: 1.6; font-weight: 400;}
         .hero-details { display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; margin-top: 10px; }
@@ -149,7 +239,6 @@
         .btn { display: inline-block; padding: 18px 45px; background-color: var(--gold); color: #fff; text-decoration: none; border-radius: 40px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; transition: all 0.3s; border: none; cursor: pointer; box-shadow: 0 5px 20px rgba(197, 160, 89, 0.4); font-size: 0.9rem; }
         .btn:hover { background-color: #B59048; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5); }
 
-        /* --- КАРУСЕЛИ --- */
         .carousel-container { position: relative; max-width: 100%; margin: 0 auto; }
         .carousel-wrapper {
             position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.15);
@@ -256,30 +345,30 @@
     <div id="main-content">
         
         <section class="hero" id="home">
-            <h1 class="reveal fade-down">КҮНДҮ ЫАЛДЬЫТ!</h1>
-            <p class="subtitle reveal fade-up delay-1">
+            <h1 class="reveal">КҮНДҮ ЫАЛДЬЫТ!</h1>
+            
+            <p class="subtitle reveal subtitle-top">
                 Улахан үөрүүнэн эһигини миигин кытта ураты күнү үллэстэргэ уонна олоҕум дьоһун күнүн бэлиэтииргэ ыҥырабын.
             </p>
             
-            <div class="reveal delay-2">
-                <div class="hero-65-accent">65</div>
-            </div>
+            <div class="hero-65-accent reveal">65</div>
             
-            <p class="subtitle reveal fade-up delay-3">
+            <p class="subtitle reveal subtitle-bottom">
                 Аймахтарбыт, чугас дьоммут бу киэһэ биһиэхэ сылаас иэйиини, үөрүүнү, умнуллубат өйдөбүлү бэлэхтиэ диэн ис сүрэхпиттэн эрэнэбин.
             </p>
             
-            <div class="hero-details reveal fade-up delay-3">
-                <div class="detail-item glass-card">
+            <div class="hero-details">
+                <div class="detail-item glass-card reveal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     <span>Муус устар 18 күнэ, 2026</span>
                 </div>
-                <div class="detail-item glass-card">
+                <div class="detail-item glass-card reveal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                     <span>Саҕаланар: 17:00</span>
                 </div>
             </div>
-            <a href="#rsvp" class="btn reveal fade-up delay-3">Кэлэргин бигэргэт</a>
+            
+            <a href="#rsvp" class="btn reveal">Кэлэргин бигэргэт</a>
         </section>
 
         <section>
@@ -313,7 +402,7 @@
             </div>
             
             <p class="about-text reveal fade-up delay-2">
-                Олох диэн дьикти айан, хас биирдии түһүлгэҕэ тус-туспа кэрэ. Бу сыллар усталарыгар бачча элбэх дьикти түгэннэр тэриллибиттэрэ, элбэх суол - иис ааспыта уонна, саамай кылаабынайа, кэккэлэһэ мэлдьи саамай суолталаах дьон - мин дьиэ кэргэним, бэриниилээх доҕотторум бааллара.
+                Олох диэн дьикти айан, хас биирдии түһүлгэҕэ тус туспа кэрэ. Бу сыллар усталарыгар бачча элбэх дьикти түгэннэр тэриллибиттэрэ, элбэх суол - иис ааспыта уонна, саамай кылаабынайа, кэккэлэһэ мэлдьи саамай суолталаах дьон - мин дьиэ кэргэним, бэрэниилээх доҕотторум бааллара.
             </p>
             <div class="quote reveal scale-in delay-3">
                 "Дьол - бу төрөөбүт дьон аттыгар сырыттахтарына"
@@ -417,7 +506,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn" style="width: 100%; margin-top: 20px; margin-bottom: 15px; font-size: 1rem;">Ыыт</button>
+                <button type="submit" class="btn reveal" style="width: 100%; margin-top: 20px; margin-bottom: 15px; font-size: 1rem;">Ыыт</button>
                 
                 <p style="text-align: center; color: var(--text-light); font-size: 0.95rem; margin-top: 15px;">
                     <span style="color: var(--gold); font-weight: 600;">Эппиэккин 08.04.2026 диэри биллэр.</span>
@@ -459,7 +548,10 @@
             envelopeTrigger.classList.add('open');
             mainContent.classList.add('visible');
             envelopeScreen.classList.add('hidden');
-            setTimeout(() => { document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active')); }, 600);
+            
+            // Больше не нужно вручную добавлять .active элементам hero,
+            // класс .visible на #main-content запускает CSS-анимации.
+
             setTimeout(() => { envelopeScreen.style.display = 'none'; }, 2700); 
         });
 
@@ -473,6 +565,7 @@
             });
         }, observerOptions);
 
+        // Наблюдаем только за элементами ВНЕ Hero секции
         document.querySelectorAll('section:not(.hero) .reveal, footer.reveal').forEach(el => observer.observe(el)); 
 
         const eventDate = new Date("April 18, 2026 17:00:00").getTime();
