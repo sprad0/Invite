@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на юбилей | 65 лет</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Ыҥырыы | 65</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -13,9 +13,10 @@
             --bg-color: #FDFBF7;
             --text-dark: #4A3C31;
             --text-light: #8A7B71;
-            /* Обновленные шрифты */
-            --font-serif: 'Playfair Display', serif;
-            --font-script: 'Great Vibes', cursive;
+            
+            /* Роскошные шрифты */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-script: 'Cormorant Garamond', serif; 
             --font-sans: 'Montserrat', sans-serif;
             
             --env-back: #CBB58A;
@@ -114,8 +115,17 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.1); z-index: 2;
             transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s; 
         }
-        .env-letter h2 { font-family: var(--font-script); font-size: clamp(3rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 0px; line-height: 1; font-weight: 400; }
-        .env-letter .age { font-family: var(--font-serif); font-size: clamp(2.5rem, 8vw, 4rem); color: var(--gold); line-height: 1; }
+        
+        .env-letter h2 { 
+            font-family: var(--font-script); 
+            font-style: italic;
+            font-size: clamp(3rem, 9vw, 4.5rem); 
+            font-weight: 600; 
+            color: var(--gold); 
+            margin-bottom: 0px; 
+            line-height: 1; 
+        }
+        .env-letter .age { font-family: var(--font-serif); font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 600; color: var(--gold); line-height: 1; }
 
         .env-left { background-color: var(--env-side); clip-path: polygon(0 0, 52% 50%, 0 100%); z-index: 3; }
         .env-right { background-color: var(--env-side); clip-path: polygon(100% 0, 100% 100%, 48% 50%); z-index: 3; }
@@ -127,7 +137,7 @@
             width: 50px; height: 50px; background-color: var(--gold); border-radius: 50%; z-index: 6;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 0 10px rgba(133, 100, 39, 0.3);
             display: flex; justify-content: center; align-items: center;
-            color: #fff; font-family: var(--font-serif); font-size: 1.5rem; transition: opacity 0.3s ease;
+            color: #fff; font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; transition: opacity 0.3s ease;
         }
         .env-seal::after { content: 'В'; }
 
@@ -146,9 +156,9 @@
         #main-content.visible { opacity: 1; }
 
         section { padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 2; overflow: hidden; }
-        h2.section-title { font-family: var(--font-serif); font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
+        h2.section-title { font-family: var(--font-serif); font-size: 2.8rem; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
 
-        /* --- НОВЫЕ КРАСИВЫЕ АНИМАЦИИ ПРИ СКРОЛЛЕ --- */
+        /* --- АНИМАЦИИ ПРИ СКРОЛЛЕ --- */
         .reveal { opacity: 0; transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translate(0) scale(1); }
         
@@ -166,75 +176,57 @@
             border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        /* HERO СЕКЦИЯ (ОБНОВЛЕННАЯ: БЕЗ КАРТИНКИ) */
+        /* HERO СЕКЦИЯ */
         .hero { 
             position: relative; 
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
             padding: 40px 20px; 
             overflow: visible; 
-            /* Чистый фон для hero */
             background: transparent;
         }
 
-        .hero h1 { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-dark); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;}
+        .hero h1 { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; font-weight: 600;}
         
-        /* РОСКОШНОЕ ОФОРМЛЕНИЕ "65 ЛЕТ" */
+        /* ИСПРАВЛЕННАЯ ЦИФРА 65 (Увеличенный line-height и padding, чтобы не обрезалась нижняя часть) */
         .hero-65-accent { 
             font-family: var(--font-serif); 
-            /* Сделали текст огромным */
-            font-size: clamp(6rem, 18vw, 11rem); 
-            
-            /* Золотой градиент для текста */
+            font-size: clamp(8rem, 25vw, 15rem); 
             background: linear-gradient(to right, #C5A059 0%, #F8E2A7 50%, #C5A059 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            
-            margin: 20px 0; 
-            line-height: 1;
-            font-weight: 700;
-            /* composition fix: add vertical padding to avoid clipping number 5 and its shadow */
-            padding: 25px 0; 
+            margin: 10px 0; 
+            line-height: 1.2; /* Было 0.9, теперь хвост 5-ки поместится полностью */
+            font-weight: 600;
+            padding: 30px 0; /* Добавили воздух сверху и снизу */
             text-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
             display: inline-block;
             position: relative;
-            
-            /* Скрываем до начала анимации */
             opacity: 0;
         }
         
-        /* Декоративные линии по бокам (сделали длиннее) */
         .hero-65-accent::before, .hero-65-accent::after {
             content: '';
             position: absolute;
             top: 50%;
-            /* Modified transform to center lines with the new padding */
             transform: translateY(-50%);
-            width: 120px;
+            width: 150px; 
             height: 2px;
             background-color: var(--gold);
             opacity: 0.5;
         }
-        .hero-65-accent::before { left: -140px; }
-        .hero-65-accent::after { right: -140px; }
+        .hero-65-accent::before { left: -180px; } 
+        .hero-65-accent::after { right: -180px; }
 
-        /* НОВАЯ КРАСИВАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ */
         .reveal.active .hero-65-accent {
-            /* Запускаем пружинящее появление и бесконечный перелив золота */
-            /* Updated to new 'bloom' animation and shimmer */
             animation: goldenBloomIn 1.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards, shimmerText 4s linear infinite;
-            animation-delay: 0.8s; /* Ждем, пока откроется конверт */
+            animation-delay: 0.8s;
         }
 
-        /* --- Replace previous keyframes --- */
         @keyframes goldenBloomIn {
-            /* Initial state: small, rotated, blurred, lower */
             0% { opacity: 0; transform: scale(0.3) rotateX(-45deg) translateY(60px); filter: blur(15px); }
-            /* Mid point: slightly larger than final, rotated, mostly clear */
             55% { transform: scale(1.05) rotateX(5deg) translateY(0); filter: blur(1px); }
-            /* Land point: slightly smaller than mid point, no rotation, sharp */
             75% { transform: scale(0.98) rotateX(0deg) translateY(0); filter: blur(0px); }
-            /* Final state: full size, no rotation, sharp, visible */
             100% { opacity: 1; transform: scale(1) rotateX(0deg) translateY(0); filter: blur(0px); }
         }
 
@@ -243,7 +235,7 @@
             100% { background-position: 200% center; }
         }
         
-        .hero .subtitle { font-size: 1.15rem; color: var(--text-dark); max-width: 700px; margin: 0 auto 30px; line-height: 1.6;}
+        .hero .subtitle { font-size: 1.15rem; color: var(--text-dark); max-width: 700px; margin: 0 auto 30px; line-height: 1.6; font-weight: 400;}
         
         .hero-details { display: flex; justify-content: center; gap: 40px; margin-bottom: 50px; margin-top: 10px; }
 
@@ -257,51 +249,135 @@
         }
         .btn:hover { background-color: #B59048; transform: translateY(-3px); box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5); }
 
-        /* БЛОК С ФОТО И ИМЕНЕМ */
-        .about-image { 
-            width: 100%; max-width: 450px; height: auto; aspect-ratio: 3 / 4; 
-            border-radius: 20px; object-fit: cover; margin: 0 auto 0; display: block; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        /* --- КАРУСЕЛИ --- */
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .carousel-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            /* Отключаем выделение для удобного свайпа */
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 100%;
+            /* Фикс для свайпа - не даем перетаскивать саму картинку браузером */
+            touch-action: pan-y;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none; /* Картинку нельзя случайно "зацепить" и потащить */
         }
         
-        /* ОГРОМНОЕ КАЛЛИГРАФИЧЕСКОЕ ИМЯ */
+        .carousel-main {
+            width: 100%; 
+            max-width: 450px; 
+            aspect-ratio: 3 / 4; 
+            margin: 0 auto; 
+            z-index: 4;
+        }
+        .carousel-main .carousel-wrapper { height: 100%; }
+
+        .carousel-gallery { padding-top: 20px; }
+        .carousel-gallery .carousel-wrapper { height: 450px; }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background: #fff;
+            color: var(--text-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(197, 160, 89, 0.3);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+        
         .honoree-name-large { 
             font-family: var(--font-script); 
-            font-size: clamp(4.5rem, 12vw, 8rem); /* Очень крупно */
+            font-style: italic;
+            font-size: clamp(3.5rem, 10vw, 6.5rem);
             color: var(--gold); 
-            margin-top: -30px; /* Слияние с фото */
+            margin-top: -30px; 
             margin-bottom: 30px;
-            line-height: 1.1;
-            font-weight: 400;
+            line-height: 1;
+            font-weight: 600;
             text-shadow: 0 5px 15px rgba(0,0,0,0.05);
             position: relative;
             z-index: 5;
         }
         
-        .about-text { line-height: 1.8; font-size: 1.15rem; margin-bottom: 20px; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
-        .quote { font-family: var(--font-script); font-size: 2.5rem; color: var(--gold); margin: 40px 0; line-height: 1.3;}
+        .about-text { line-height: 1.8; font-size: 1.15rem; margin-bottom: 20px; font-weight: 400; text-shadow: 0 1px 2px rgba(255,255,255,0.8); }
+        .quote { font-family: var(--font-script); font-style: italic; font-size: 2.5rem; font-weight: 600; color: var(--gold); margin: 40px 0; line-height: 1.2;}
 
         .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
         .detail-card { padding: 40px 30px; border-radius: 20px; transition: transform 0.3s; }
         .detail-card:hover { transform: translateY(-5px); }
-        .detail-card h3 { font-family: var(--font-serif); color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; }
+        .detail-card h3 { font-family: var(--font-serif); color: var(--gold); font-size: 2rem; margin-bottom: 20px; font-weight: 600; }
 
         .timer-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .timer-box { width: 80px; padding: 20px 0; border-radius: 15px; }
         .timer-box span { display: block; }
-        .timer-box .num { font-size: 2.2rem; font-family: var(--font-serif); color: var(--gold); font-weight: 600; text-shadow: 0 2px 5px rgba(255,255,255,0.8);}
-        .timer-box .text { font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); margin-top: 5px; letter-spacing: 1px;}
+        .timer-box .num { font-size: 2.5rem; font-family: var(--font-serif); color: var(--gold); font-weight: 600; text-shadow: 0 2px 5px rgba(255,255,255,0.8);}
+        .timer-box .text { font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); margin-top: 5px; letter-spacing: 1px; font-weight: 500;}
         
         .calendar { border-radius: 20px; padding: 35px; display: inline-block; margin-top: 20px; }
-        .calendar-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 20px; color: var(--text-dark);}
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 35px); gap: 10px; text-align: center; font-size: 1rem; }
+        .calendar-title { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 20px; color: var(--text-dark); font-weight: 600;}
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 35px); gap: 10px; text-align: center; font-size: 1rem; font-weight: 500;}
         .day-name { font-weight: 600; color: var(--text-light); font-size: 0.8rem; text-transform: uppercase;}
         .day { padding: 8px; border-radius: 50%; display: flex; justify-content: center; align-items: center;}
         .highlight-day { background-color: var(--gold); color: #fff; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.5); font-weight: 600;}
-
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding-top: 20px;}
-        .gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.5s; }
-        .gallery img:hover { transform: scale(1.03); }
 
         .rsvp-form { padding: 50px; border-radius: 20px; max-width: 600px; margin: 0 auto; }
         .form-group { margin-bottom: 25px; text-align: left; }
@@ -309,12 +385,12 @@
         .form-group input[type="text"] { width: 100%; padding: 15px 20px; border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 12px; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s; background: rgba(255,255,255,0.9); }
         .form-group input[type="text"]:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.1);}
         .radio-group { display: flex; flex-direction: column; gap: 12px; margin-top: 5px;}
-        .radio-group label { display: flex; align-items: center; gap: 12px; font-size: 1.05rem; cursor: pointer; color: var(--text-dark); }
+        .radio-group label { display: flex; align-items: center; gap: 12px; font-size: 1.05rem; cursor: pointer; color: var(--text-dark); font-weight: 400;}
         .radio-group input[type="radio"] { accent-color: var(--gold); transform: scale(1.2);}
 
         .map-container { border-radius: 20px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,0.5);}
 
-        footer { padding: 80px 20px; text-align: center; color: var(--gold); font-family: var(--font-script); font-size: 3.5rem; background: rgba(232, 220, 196, 0.3); backdrop-filter: blur(10px); }
+        footer { padding: 80px 20px; text-align: center; color: var(--gold); font-family: var(--font-script); font-style: italic; font-size: 3.5rem; font-weight: 600; background: rgba(232, 220, 196, 0.3); backdrop-filter: blur(10px); }
 
         @media(max-width: 768px) { 
             .details-grid { grid-template-columns: 1fr; } 
@@ -322,33 +398,31 @@
             .calendar-grid { grid-template-columns: repeat(7, 30px); gap: 5px;}
             .timer-box { width: 65px; padding: 15px 0;}
             .timer-box .num { font-size: 1.8rem; }
-            .hero h1 { font-size: 1.3rem; }
+            .hero h1 { font-size: 1.4rem; }
             
-            /* Новые размеры для мобилки - composition check */
+            /* Мобильный размер цифры 65 */
             .hero-65-accent { 
-                font-size: 5.5rem; 
-                /* Add mobile-specific symmetric padding */
-                padding: 15px 0; 
+                font-size: 8.5rem; 
+                padding: 20px 0; /* Тоже увеличен отступ */
             }
-            .hero-65-accent::before, .hero-65-accent::after { 
-                width: 40px; 
-            }
-            .hero-65-accent::before { left: -50px; }
-            .hero-65-accent::after { right: -50px; }
+            .hero-65-accent::before, .hero-65-accent::after { width: 50px; }
+            .hero-65-accent::before { left: -60px; }
+            .hero-65-accent::after { right: -60px; }
+
+            .carousel-gallery .carousel-wrapper { height: 300px; }
         }
     </style>
 </head>
 <body class="no-scroll">
 
     <div id="fixed-bg"></div>
-
     <div id="particles-container"></div>
 
     <div id="envelope-screen">
         <div class="envelope-wrapper" id="envelope-trigger">
             <div class="env-part env-back"></div>
             <div class="env-letter">
-                <h2 style="font-family: var(--font-script); font-size: 3rem; color: var(--gold);">Приглашение</h2>
+                <h2 style="font-family: var(--font-script); font-style: italic; font-size: clamp(3rem, 9vw, 4.5rem); font-weight: 600; color: var(--gold); margin: 0; line-height: 1;">Ыҥырыы</h2>
             </div>
             <div class="env-part env-left"></div>
             <div class="env-part env-right"></div>
@@ -356,24 +430,23 @@
             <div class="env-part env-top"></div>
             <div class="env-seal"></div>
         </div>
-        <p class="click-text">Нажмите на конверт, чтобы открыть</p>
+        <p class="click-text">Конверты баттаан арый</p>
     </div>
 
     <div id="main-content">
         
         <section class="hero" id="home">
-            <h1 class="reveal fade-down">ДОРОГОЙ ГОСТЬ!</h1>
-            
+            <h1 class="reveal fade-down">КҮНДҮ ЫАЛДЬЫТ!</h1>
             <p class="subtitle reveal fade-up delay-1">
-                С огромной радостью приглашаю Вас разделить со мной особенный день и отпраздновать важную дату моей жизни.
+                Улахан үөрүүнэн эһигини миигин кытта ураты күнү үллэстэргэ уонна олоҕум дьоһун кунун бэлиэтииргэ ыҥырабын.
             </p>
             
             <div class="reveal delay-2">
-                <div class="hero-65-accent">65 лет</div>
+                <div class="hero-65-accent">65</div>
             </div>
             
             <p class="subtitle reveal fade-up delay-3">
-                Искренне надеюсь, что этот вечер, проведённый в кругу родных, близких и дорогих сердцу людей, подарит нам тёплые эмоции, радость и незабываемые впечатления.
+                Аймахтарбыт, чугас дьоммут бу киэһээ биһиэхэ сылаас иэйиини, үөрууну, умнуллубат өйдөбүлү бэлэхтиэ диэн ис сурэхпиттэн эрэнэбин.
             </p>
             
             <div class="hero-details reveal fade-up delay-3">
@@ -384,48 +457,70 @@
                         <line x1="8" y1="2" x2="8" y2="6"></line>
                         <line x1="3" y1="10" x2="21" y2="10"></line>
                     </svg>
-                    <span>18 Апреля 2026</span>
+                    <span>Муус устар 18 күнэ, 2026</span>
                 </div>
                 <div class="detail-item glass-card">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
-                    <span>Начало в 17:00</span>
+                    <span>Саҕаланар: 17:00</span>
                 </div>
             </div>
-            
-            <a href="#rsvp" class="btn reveal fade-up delay-3">Подтвердить присутствие</a>
+            <a href="#rsvp" class="btn reveal fade-up delay-3">Кэлэргин бигэргэт</a>
         </section>
 
         <section>
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Юбиляр" class="about-image reveal scale-in">
+            <div class="carousel-container carousel-main reveal scale-in">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="images/Osnova1.jpg" alt="Юбиляр 1"></div>
+                        <div class="carousel-slide"><img src="images/Osnova2.jpg" alt="Юбиляр 2"></div>
+                        <div class="carousel-slide"><img src="images/Osnova3.jpg" alt="Юбиляр 3"></div>
+                        <div class="carousel-slide"><img src="images/Osnova4.jpg" alt="Юбиляр 4"></div>
+                        <div class="carousel-slide"><img src="images/Osnova5.jpg" alt="Юбиляр 5"></div>
+                    </div>
+                    <button class="carousel-btn prev-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-btn next-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+                <div class="carousel-indicators">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                    <div class="dot" data-index="3"></div>
+                    <div class="dot" data-index="4"></div>
+                </div>
+            </div>
             
             <div class="honoree-name-large reveal scale-in delay-1">
                 Валентина Семеновна
             </div>
             
             <p class="about-text reveal fade-up delay-2">
-                Жизнь — это удивительное путешествие, и каждый её этап по-своему прекрасен. За эти годы было создано так много чудесных моментов, пройдено немало дорог и, самое главное, рядом всегда были самые важные люди — моя семья и преданные друзья.
+                Олох диэн дьикти айан, хас биирдии түһүлгэҕэ тус туспа кэрэ. Бу сыллар усталарыгар бачча элбэх дьикти түгэннэр тэриллибиттэрэ, элбэх суол - иис ааспыта уонна, саамай гылаабынайа, кэккэлэһэ мэлдьи саамай суолталаах дьон - мин дьиэ кэргэним, бэрэниилээх доҕотторум бааллара.
             </p>
             <div class="quote reveal scale-in delay-3">
-                "Счастье — это когда родные люди рядом"
+                "Дьол - бу төрөөбүт дьон аттыгар сырыттахтарына"
             </div>
         </section>
 
         <section>
-            <h2 class="section-title reveal fade-up">До события осталось</h2>
+            <h2 class="section-title reveal fade-up">Хас күн хаалла?</h2>
             <div class="timer-container reveal fade-up delay-1" id="countdown">
-                <div class="timer-box glass-card"><span class="num" id="days">00</span><span class="text">Дней</span></div>
-                <div class="timer-box glass-card"><span class="num" id="hours">00</span><span class="text">Часов</span></div>
-                <div class="timer-box glass-card"><span class="num" id="minutes">00</span><span class="text">Минут</span></div>
-                <div class="timer-box glass-card"><span class="num" id="seconds">00</span><span class="text">Секунд</span></div>
+                <div class="timer-box glass-card"><span class="num" id="days">00</span><span class="text">Күн</span></div>
+                <div class="timer-box glass-card"><span class="num" id="hours">00</span><span class="text">Чаас</span></div>
+                <div class="timer-box glass-card"><span class="num" id="minutes">00</span><span class="text">Мүнүүтэ</span></div>
+                <div class="timer-box glass-card"><span class="num" id="seconds">00</span><span class="text">Сөкуундэ</span></div>
             </div>
 
             <div class="calendar glass-card reveal scale-in delay-2">
-                <div class="calendar-title">Апрель 2026</div>
+                <div class="calendar-title">Муус устар 2026</div>
                 <div class="calendar-grid">
-                    <div class="day-name">Пн</div><div class="day-name">Вт</div><div class="day-name">Ср</div><div class="day-name">Чт</div><div class="day-name">Пт</div><div class="day-name">Сб</div><div class="day-name">Вс</div>
+                    <div class="day-name">Бн</div><div class="day-name">Оп</div><div class="day-name">Ср</div><div class="day-name">Чп</div><div class="day-name">Бт</div><div class="day-name">Сб</div><div class="day-name">Бс</div>
                     <div></div><div></div>
                     <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div>
                     <div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div>
@@ -437,16 +532,16 @@
         </section>
 
         <section>
-            <h2 class="section-title reveal fade-up">Программа и место</h2>
+            <h2 class="section-title reveal fade-up">Бэлиэ күн түһүгэ</h2>
             <div class="details-grid">
                 <div class="detail-card glass-card reveal fade-left delay-1">
-                    <h3>Программа праздника</h3>
-                    <p style="margin-bottom: 15px; font-size: 1.1rem;"><strong>16:00</strong><br>Сбор гостей, приветственный фуршет</p>
-                    <p style="font-size: 1.1rem;"><strong>17:00</strong><br>Начало праздничного банкета</p>
+                    <h3>Дьоро күн программата</h3>
+                    <p style="margin-bottom: 15px; font-size: 1.1rem;"><strong>16:00</strong><br>Мустуу</p>
+                    <p style="font-size: 1.1rem;"><strong>17:00</strong><br>Үөрүүлээх чааһа</p>
                 </div>
                 <div class="detail-card glass-card reveal fade-right delay-1">
-                    <h3>Локация</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.6;">г. Якутск<br>Проспект Ленина, 30<br>Здание "Дом правительства 2"<br><strong style="color: var(--gold);">Столовая №3</strong></p>
+                    <h3>Буолар сирэ</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">Дьокуускай куорат<br>Ленин болуоссата, 30<br>"Правительства иккис дьиэтэ"<br><strong style="color: var(--gold);">Үһүс остолобуой</strong></p>
                 </div>
             </div>
         </section>
@@ -455,7 +550,7 @@
             <div class="map-container reveal scale-in">
                 <iframe src="https://yandex.ru/map-widget/v1/?ll=129.731283%2C62.027747&z=16&pt=129.731283,62.027747,pm2rdm" width="100%" height="350" frameborder="0" allowfullscreen="true"></iframe>
             </div>
-            <a href="https://2gis.ru/yakutsk/search/3%20%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F%20/firm/70000001039069622?m=129.731283%2C62.027747%2F16.71" target="_blank" class="btn reveal fade-up delay-1">Открыть в 2ГИС</a>
+            <a href="https://2gis.ru/yakutsk/search/3%20%D1%81%D1%82%D0%BE%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F%20/firm/70000001039069622?m=129.731283%2C62.027747%2F16.71" target="_blank" class="btn reveal fade-up delay-1">2ГИС нөҥүө арый</a>
         </section>
 
         <section>
@@ -465,43 +560,71 @@
                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                     <polyline points="21 15 16 10 5 21"></polyline>
                 </svg>
-                Мгновения
+                Түгэннэр
             </h2>
-            <div class="gallery">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Фото 1" class="reveal fade-up delay-1">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Фото 2" class="reveal fade-up delay-2">
-                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Фото 3" class="reveal fade-up delay-1">
+            
+            <div class="carousel-container carousel-gallery reveal fade-up delay-1">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track">
+                        <div class="carousel-slide"><img src="images/1.jpg" alt="Момент 1"></div>
+                        <div class="carousel-slide"><img src="images/2.jpg" alt="Момент 2"></div>
+                        <div class="carousel-slide"><img src="images/3.jpg" alt="Момент 3"></div>
+                        <div class="carousel-slide"><img src="images/4.jpg" alt="Момент 4"></div>
+                        <div class="carousel-slide"><img src="images/5.jpg" alt="Момент 5"></div>
+                        <div class="carousel-slide"><img src="images/6.jpg" alt="Момент 6"></div>
+                        <div class="carousel-slide"><img src="images/7.jpg" alt="Момент 7"></div>
+                        <div class="carousel-slide"><img src="images/8.jpg" alt="Момент 8"></div>
+                    </div>
+                    
+                    <button class="carousel-btn prev-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-btn next-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <div class="dot active" data-index="0"></div>
+                    <div class="dot" data-index="1"></div>
+                    <div class="dot" data-index="2"></div>
+                    <div class="dot" data-index="3"></div>
+                    <div class="dot" data-index="4"></div>
+                    <div class="dot" data-index="5"></div>
+                    <div class="dot" data-index="6"></div>
+                    <div class="dot" data-index="7"></div>
+                </div>
             </div>
         </section>
 
         <section id="rsvp">
-            <h2 class="section-title reveal fade-up">Анкета гостя</h2>
-            <p class="reveal fade-up delay-1" style="margin-bottom: 40px; color: var(--text-light); font-size: 1.1rem;">Пожалуйста, подтвердите ваше присутствие, заполнив форму ниже.<br>Ответ будет отправлен в WhatsApp.</p>
+            <h2 class="section-title reveal fade-up">Анкета</h2>
+            <p class="reveal fade-up delay-1" style="margin-bottom: 40px; color: var(--text-light); font-size: 1.1rem;">Баһаалыста маны толор.<br>Эппиэтин WhatsApp нөҥүө барыа.</p>
             
             <form class="rsvp-form glass-card reveal scale-in delay-2" id="whatsapp-form">
                 <div class="form-group">
-                    <label for="guest-name">Ваши Имя и Фамилия</label>
-                    <input type="text" id="guest-name" placeholder="Например: Иван Иванов" required>
+                    <label for="guest-name">Ааккыт уонна фамилияҕыт</label>
+                    <input type="text" id="guest-name" placeholder="Холобура: Иван Иванов" required>
                 </div>
                 <div class="form-group">
-                    <label>Сможете ли вы прийти?</label>
+                    <label>Кэлэҕин дуо?</label>
                     <div class="radio-group">
                         <label>
                             <input type="radio" name="attendance" value="С радостью буду!" checked>
-                            Да, с удовольствием приду
+                            Үөрүүнү кытта кэлиэм
                         </label>
                         <label>
                             <input type="radio" name="attendance" value="К сожалению, не смогу быть.">
-                            К сожалению, не смогу присутствовать
+                            Кыайан кэлбэппин
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn" style="width: 100%; margin-top: 20px; font-size: 1rem;">Отправить ответ</button>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 20px; font-size: 1rem;">Ыыт</button>
             </form>
         </section>
 
         <footer class="reveal fade-up">
-            Ждём вас на празднике!
+            Үбүлүөйбэр долгуйа күүтэбин
         </footer>
 
     </div>
@@ -511,29 +634,22 @@
         function createParticles() {
             const container = document.getElementById('particles-container');
             const particleCount = 100; 
-
             for (let i = 0; i < particleCount; i++) {
                 let particle = document.createElement('div');
                 particle.classList.add('particle');
-                
                 let size = Math.random() * 8 + 4;
                 particle.style.width = `${size}px`;
                 particle.style.height = `${size}px`;
-                
                 let blurAmount = Math.random() * 3;
                 particle.style.filter = `blur(${blurAmount}px)`;
-                
                 particle.style.left = `${Math.random() * 100}vw`;
                 particle.style.top = `${Math.random() * 100}%`;
-                
                 let duration = Math.random() * 20 + 15; 
                 let delay = Math.random() * 20; 
                 particle.style.animationDuration = `${duration}s`;
                 particle.style.animationDelay = `-${delay}s`; 
-                
                 let drift = (Math.random() - 0.5) * 100; 
                 particle.style.setProperty('--drift', `${drift}px`);
-                
                 container.appendChild(particle);
             }
         }
@@ -545,18 +661,14 @@
         const mainContent = document.getElementById('main-content');
 
         envelopeTrigger.addEventListener('click', () => {
-            // Разблокируем скролл и возвращаем в верх
             document.body.classList.remove('no-scroll');
             window.scrollTo({ top: 0, behavior: 'instant' });
-
             envelopeTrigger.classList.add('open');
             mainContent.classList.add('visible');
             envelopeScreen.classList.add('hidden');
-            
             setTimeout(() => {
                 document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
             }, 600);
-
             setTimeout(() => {
                 envelopeScreen.style.display = 'none';
             }, 2700); 
@@ -585,7 +697,7 @@
 
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<div class='timer-box glass-card' style='width:auto; padding: 15px 30px;'><span class='num'>Ура!</span><span class='text'>Праздник начался</span></div>";
+                document.getElementById("countdown").innerHTML = "<div class='timer-box glass-card' style='width:auto; padding: 15px 30px;'><span class='num'>Ура!</span><span class='text'>Бырааһынньык саҕаланна</span></div>";
                 return;
             }
 
@@ -605,10 +717,139 @@
             e.preventDefault();
             const name = document.getElementById('guest-name').value;
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const message = `Здравствуйте! Это ${name}.%0AПо поводу приглашения на юбилей 18 апреля:%0A${attendance}`;
+            const message = `Үтүө күнүнэн! Бу мин ${name} суруйабын.%0AМуус устар 18 күнүгэр буолар үбүлүөйгэ ыҥырыыгыт иһин махтал:%0A${attendance}`;
             const phone = "79142629255"; 
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         });
+
+        // --- 6. ОБНОВЛЕННАЯ ЛОГИКА КАРУСЕЛЕЙ (Скролл + Свайпы) ---
+        function initCarousels() {
+            const carousels = document.querySelectorAll('.carousel-container');
+            
+            // Наблюдатель (Observer), который следит, видно ли карусель на экране
+            const carouselObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Если карусель видно хотя бы на 30% - запускаем, иначе ставим на паузу
+                    if (entry.isIntersecting) {
+                        entry.target.startAutoPlay();
+                    } else {
+                        entry.target.stopAutoPlay();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            carousels.forEach(carousel => {
+                const track = carousel.querySelector('.carousel-track');
+                const slides = Array.from(track.children);
+                const nextBtn = carousel.querySelector('.next-btn');
+                const prevBtn = carousel.querySelector('.prev-btn');
+                const dots = Array.from(carousel.querySelectorAll('.dot'));
+                let currentIndex = 0;
+                let slideInterval;
+                let isPlaying = false;
+
+                function updateCarousel() {
+                    const slideWidth = slides[0].getBoundingClientRect().width;
+                    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                    
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
+
+                // Делаем функции доступными для Observer
+                carousel.startAutoPlay = function() {
+                    if (!isPlaying) {
+                        slideInterval = setInterval(nextSlide, 4500);
+                        isPlaying = true;
+                    }
+                };
+
+                carousel.stopAutoPlay = function() {
+                    clearInterval(slideInterval);
+                    isPlaying = false;
+                };
+
+                function resetAutoSlide() {
+                    if (isPlaying) {
+                        carousel.stopAutoPlay();
+                        carousel.startAutoPlay();
+                    }
+                }
+
+                // Кнопки управления
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        resetAutoSlide();
+                    });
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                        updateCarousel();
+                        resetAutoSlide();
+                    });
+                }
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                        resetAutoSlide();
+                    });
+                });
+
+                // Добавляем поддержку свайпов пальцем
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    carousel.stopAutoPlay(); // Пауза при касании
+                }, {passive: true});
+
+                track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    currentX = e.touches[0].clientX;
+                }, {passive: true});
+
+                track.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const diff = startX - currentX;
+
+                    // Если провели пальцем больше чем на 50 пикселей
+                    if (Math.abs(diff) > 50) { 
+                        if (diff > 0) {
+                            nextSlide(); // Свайп влево
+                        } else {
+                            currentIndex = (currentIndex - 1 + slides.length) % slides.length; // Свайп вправо
+                            updateCarousel();
+                        }
+                    }
+                    
+                    // Возобновляем автопрокрутку, если карусель все еще на экране
+                    carousel.startAutoPlay(); 
+                });
+
+                window.addEventListener('resize', updateCarousel);
+                
+                // Передаем карусель наблюдателю
+                carouselObserver.observe(carousel);
+            });
+        }
+        
+        // Запускаем инициализацию всех каруселей
+        initCarousels();
     </script>
 </body>
 </html>
